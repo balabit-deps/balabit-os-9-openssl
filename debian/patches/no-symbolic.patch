@@ -1,0 +1,19 @@
+From: Debian OpenSSL Team <pkg-openssl-devel@lists.alioth.debian.org>
+Date: Sun, 5 Nov 2017 15:09:09 +0100
+Subject: no-symbolic
+
+---
+ Configurations/shared-info.pl | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+--- a/Configurations/shared-info.pl
++++ b/Configurations/shared-info.pl
+@@ -25,7 +25,7 @@
+ my %shared_info;
+ %shared_info = (
+     'gnu-shared' => {
+-        shared_ldflag         => '-shared -Wl,-Bsymbolic',
++        shared_ldflag         => '-shared',
+         shared_sonameflag     => '-Wl,-soname=',
+     },
+     'linux-shared' => sub {
