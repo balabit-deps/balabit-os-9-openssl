@@ -1,3 +1,12 @@
+openssl (3.0.2-0ubuntu1.10bb1) jammy; urgency=medium
+
+  * Forward port patches from balabit-os-8.0
+    The Balabit specific part has been removed from "openssl/libssl.so: export
+    ssl3_send_alert as SSL_send_alert" to make upstreaming this patch possible
+    in the future.
+
+ --  <gergely.tonte@oneidentity.com>  Wed, 10 May 2023 08:40:07 +0200
+
 openssl (3.0.2-0ubuntu1.10) jammy-security; urgency=medium
 
   * SECURITY UPDATE: DoS in AES-XTS cipher decryption
