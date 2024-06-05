@@ -102,3 +102,7 @@ CVE-2023-6129.patch
 CVE-2023-6237.patch
 CVE-2024-0727.patch
 openssl-pkcs1-implicit-rejection.patch
+CVE-2022-40735-1.patch
+CVE-2022-40735-2.patch
+CVE-2022-40735-3.patch
+CVE-2022-40735-4.patch
