@@ -1,3 +1,25 @@
+openssl (3.0.2-0ubuntu1.16) jammy-security; urgency=medium
+
+  * SECURITY UPDATE: Excessive time spent in DH modular-exponentiation
+    calcuations when using long exponents.
+    - debian/patches/CVE-2022-40735-1.patch: Use the minimum key length
+      for known safe primes as per RFC 7919 in crypto/dh/dh_group_params.c,
+      crypto/ffc/ffc_backend.c, crypto/ffc/ffc_dh.c,
+      crypto/ffc/ffc_key_generate.c, include/internal/ffc.h and
+      test/ffc_internal_test.c
+    - debian/patches/CVE-2022-40735-2.patch: print DH key length in
+      providers/implementations/encode_decode/encode_key2text.c,
+      test/recipes/30-test_evp_pkey_provided/DH.priv.txt and
+      test/recipes/30-test_evp_pkey_provided/DH.pub.txt
+    - debian/patches/CVE-2022-40735-3.patch: test that short private keys
+      are generated when using a known safe DH prime in
+      test/evp_extra_test2.c
+    - debian/patches/CVE-2022-40735-4.patch: copy keylength when copying
+      FFC parameters in crypto/ffc/ffc_params.c and test/ffc_internal_test.c
+    - CVE-2022-40735
+
+ -- Alex Murray <alex.murray@canonical.com>  Wed, 05 Jun 2024 12:58:14 +0930
+
 openssl (3.0.2-0ubuntu1.15bb1) jammy; urgency=medium
 
   * Balabit patched version
