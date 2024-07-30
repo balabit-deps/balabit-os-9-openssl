@@ -1,3 +1,27 @@
+openssl (3.0.2-0ubuntu1.17) jammy-security; urgency=medium
+
+  * SECURITY UPDATE: unbounded mem growth when processing TLSv1.3 sessions
+    - debian/patches/CVE-2024-2511.patch: fix unconstrained session cache
+      growth in TLSv1.3 in ssl/ssl_lib.c, ssl/ssl_sess.c,
+      ssl/statem/statem_srvr.c.
+    - CVE-2024-2511
+  * SECURITY UPDATE: checking excessively long DSA keys or params very slow
+    - debian/patches/CVE-2024-4603.patch: check DSA parameters for
+      excessive sizes before validating in crypto/dsa/dsa_check.c,
+      test/recipes/15-test_dsaparam_data/invalid/p10240_q256_too_big.pem.
+    - CVE-2024-4603
+  * SECURITY UPDATE: use after free with SSL_free_buffers
+    - debian/patches/CVE-2024-4741.patch: only free the read buffers if
+      we're not using them in ssl/record/rec_layer_s3.c,
+      ssl/record/record.h, ssl/ssl_lib.c.
+    - CVE-2024-4741
+  * SECURITY UPDATE: crash or memory disclosure via SSL_select_next_proto
+    - debian/patches/CVE-2024-5535.patch: validate provided client list in
+      ssl/ssl_lib.c.
+    - CVE-2024-5535
+
+ -- Marc Deslauriers <marc.deslauriers@ubuntu.com>  Tue, 30 Jul 2024 11:18:05 -0400
+
 openssl (3.0.2-0ubuntu1.16) jammy-security; urgency=medium
 
   * SECURITY UPDATE: Excessive time spent in DH modular-exponentiation
