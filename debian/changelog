@@ -1,3 +1,12 @@
+openssl (3.0.2-0ubuntu1.18) jammy-security; urgency=medium
+
+  * SECURITY UPDATE: Possible denial of service in X.509 name checks
+    - debian/patches/CVE-2024-6119.patch: avoid type errors in EAI-related
+      name check logic in crypto/x509/v3_utl.c, test/*.
+    - CVE-2024-6119
+
+ -- Marc Deslauriers <marc.deslauriers@ubuntu.com>  Tue, 20 Aug 2024 13:27:32 -0400
+
 openssl (3.0.2-0ubuntu1.17) jammy-security; urgency=medium
 
   * SECURITY UPDATE: unbounded mem growth when processing TLSv1.3 sessions
