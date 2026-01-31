@@ -1,3 +1,49 @@
+openssl (3.0.2-0ubuntu1.21) jammy-security; urgency=medium
+
+  * SECURITY UPDATE: Stack buffer overflow in CMS AuthEnvelopedData parsing
+    - debian/patches/CVE-2025-15467-1.patch: correct handling of
+      AEAD-encrypted CMS with inadmissibly long IV in crypto/evp/evp_lib.c.
+    - debian/patches/CVE-2025-15467-2.patch: some comments to clarify
+      functions usage in crypto/asn1/evp_asn1.c.
+    - debian/patches/CVE-2025-15467-3.patch: test for handling of
+      AEAD-encrypted CMS with inadmissibly long IV in test/cmsapitest.c,
+      test/recipes/80-test_cmsapi.t,
+      test/recipes/80-test_cmsapi_data/encDataWithTooLongIV.pem.
+    - CVE-2025-15467
+  * SECURITY UPDATE: Heap out-of-bounds write in BIO_f_linebuffer on short
+    writes
+    - debian/patches/CVE-2025-68160.patch: fix heap buffer overflow in
+      BIO_f_linebuffer in crypto/bio/bf_lbuf.c.
+    - CVE-2025-68160
+  * SECURITY UPDATE: Unauthenticated/unencrypted trailing bytes with
+    low-level OCB function calls
+    - debian/patches/CVE-2025-69418.patch: fix OCB AES-NI/HW stream path
+      unauthenticated/unencrypted trailing bytes in crypto/modes/ocb128.c.
+    - CVE-2025-69418
+  * SECURITY UPDATE: Out of bounds write in PKCS12_get_friendlyname() UTF-8
+    conversion
+    - debian/patches/CVE-2025-69419.patch: check return code of UTF8_putc
+      in crypto/asn1/a_strex.c, crypto/pkcs12/p12_utl.c.
+    - CVE-2025-69419
+  * SECURITY UPDATE: Missing ASN1_TYPE validation in
+    TS_RESP_verify_response() function
+    - debian/patches/CVE-2025-69420.patch: verify ASN1 object's types
+      before attempting to access them as a particular type in
+      crypto/ts/ts_rsp_verify.c.
+    - CVE-2025-69420
+  * SECURITY UPDATE: NULL Pointer Dereference in PKCS12_item_decrypt_d2i_ex
+    - debian/patches/CVE-2025-69421.patch: add NULL check in
+      crypto/pkcs12/p12_decr.c.
+    - CVE-2025-69421
+  * SECURITY UPDATE: ASN1_TYPE missing validation and type confusion
+    - debian/patches/CVE-2026-2279x.patch: ensure ASN1 types are checked
+      before use in apps/s_client.c, crypto/pkcs12/p12_kiss.c,
+      crypto/pkcs7/pk7_doit.c.
+    - CVE-2026-22795
+    - CVE-2026-22796
+
+ -- Marc Deslauriers <marc.deslauriers@ubuntu.com>  Mon, 26 Jan 2026 07:32:08 -0500
+
 openssl (3.0.2-0ubuntu1.20bb1) jammy; urgency=medium
 
   * Balabit patched version
