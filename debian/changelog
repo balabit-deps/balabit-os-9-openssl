@@ -1,3 +1,41 @@
+openssl (3.0.2-0ubuntu1.23) jammy-security; urgency=medium
+
+  * SECURITY UPDATE: NULL pointer dereference when processing an OCSP
+    response
+    - debian/patches/CVE-2026-28387.patch: dane_match_cert() should
+      X509_free() on ->mcert instead of OPENSSL_free() in
+      crypto/x509/x509_vfy.c.
+    - CVE-2026-28387
+  * SECURITY UPDATE: NULL Pointer Dereference When Processing a Delta CRL
+    - debian/patches/CVE-2026-28388-1.patch: fix NULL Dereference When
+      Delta CRL Lacks CRL Number Extension in crypto/x509/x509_vfy.c.
+    - debian/patches/CVE-2026-28388-2.patch: Added test in test/*.
+    - CVE-2026-28388
+  * SECURITY UPDATE: Possible NULL dereference when processing CMS
+    KeyAgreeRecipientInfo
+    - debian/patches/CVE-2026-28389.patch: Fix NULL deref in
+      [ec]dh_cms_set_shared_info in crypto/cms/cms_dh.c,
+      crypto/cms/cms_ec.c.
+    - CVE-2026-28389
+  * SECURITY UPDATE: Possible NULL Dereference When Processing CMS
+    KeyTransportRecipientInfo
+    - debian/patches/CVE-2026-28390.patch: Fix NULL deref in
+      rsa_cms_decrypt in crypto/cms/cms_rsa.c.
+    - CVE-2026-28390
+  * SECURITY UPDATE: Heap buffer overflow in hexadecimal conversion
+    - debian/patches/CVE-2026-31789.patch: avoid possible buffer overflow
+      in buf2hex conversion in crypto/o_str.c.
+    - CVE-2026-31789
+  * SECURITY UPDATE: Incorrect failure handling in RSA KEM RSASVE
+    encapsulation
+    - debian/patches/CVE-2026-31790-1.patch: validate RSA_public_encrypt()
+      result in RSASVE in providers/implementations/kem/rsa_kem.c.
+    - debian/patches/CVE-2026-31790-2.patch: test RSA_public_encrypt()
+      result in RSASVE in test/evp_extra_test.c.
+    - CVE-2026-31790
+
+ -- Marc Deslauriers <marc.deslauriers@ubuntu.com>  Tue, 07 Apr 2026 08:05:56 -0400
+
 openssl (3.0.2-0ubuntu1.21bb1) jammy; urgency=medium
 
   * Balabit patched version
