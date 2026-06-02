@@ -1,3 +1,69 @@
+openssl (3.0.2-0ubuntu1.25) jammy-security; urgency=medium
+
+  * SECURITY UPDATE: Heap Buffer Over-read in ASN.1 Content Parsing
+    - debian/patches/CVE-2026-34180.patch: Avoid length truncation in
+      ASN1_STRING_set in crypto/asn1/tasn_dec.c.
+    - CVE-2026-34180
+  * SECURITY UPDATE: CMS AuthEnvelopedData Processing May Accept Forged Messages
+    - debian/patches/CVE-2026-34182-pre1.patch: Ensure
+      ossl_cms_EncryptedContent_init_bio() reports an error on no OID in
+      crypto/cms/cms_enc.c, crypto/cms/cms_err.c, crypto/err/openssl.txt,
+      include/openssl/cmserr.h.
+    - debian/patches/CVE-2026-34182-1.patch: CMS: Produce error when AEAD
+      algorithms are used in enveloped data in crypto/cms/cms_enc.c,
+      crypto/cms/cms_env.c, crypto/cms/cms_err.c, crypto/cms/cms_local.h,
+      crypto/err/openssl.txt, include/openssl/cmserr.h, test/cms-msg/enveloped-
+      content-type-for-aes-gcm.pem, test/cmsapitest.c,
+      test/recipes/80-test_cms.t.
+    - debian/patches/CVE-2026-34182-2.patch: Reject potentially forged encrypted
+      CMS AuthEnvelopedData messages in crypto/cms/cms_enc.c.
+    - debian/patches/CVE-2026-34182-3.patch: Add tests for CVE-2026-34182 in
+      test/cmsapitest.c.
+    - CVE-2026-34182
+  * SECURITY UPDATE: Possible NULL Dereference in Password-Based CMS Decryption
+    - debian/patches/CVE-2026-42766.patch: Fix potential NULL dereference
+      processing CMS PasswordRecipientInfo in crypto/cms/cms_pwri.c.
+    - CVE-2026-42766
+  * SECURITY UPDATE: NULL Pointer Dereference in CRMF EncryptedValue Decryption
+    - debian/patches/CVE-2026-42767.patch: Fix potential NULL dereference in
+      OSSL_CRMF_ENCRYPTEDVALUE_decrypt() in crypto/crmf/crmf_lib.c.
+    - CVE-2026-42767
+  * SECURITY UPDATE: FFC-DH Peer Validation Uses Attacker-Supplied q
+    - debian/patches/CVE-2026-42770.patch: Match the local q DHX parameter
+      against the peer's q in providers/implementations/exchange/dh_exch.c.
+    - CVE-2026-42770
+  * SECURITY UPDATE: AES-OCB IV Ignored on EVP_Cipher() Path
+    - debian/patches/CVE-2026-45445.patch: Apply the buffered IV on the AES-OCB
+      EVP_Cipher() path in providers/implementations/ciphers/cipher_aes_ocb.c,
+      test/evp_extra_test.c.
+    - CVE-2026-45445
+  * SECURITY UPDATE: Incorrect Tag Processing for Empty Messages in
+    AES-GCM-SIV and AES-SIV modes
+    - debian/patches/CVE-2026-45446.patch: Fix handling of empty-ciphertext
+      messages in AES-SIV in providers/implementations/ciphers/cipher_aes_siv.c,
+      test/evp_extra_test.c.
+    - CVE-2026-45446
+  * SECURITY UPDATE: Heap Use-After-Free in OpenSSL PKCS7_verify()
+    - debian/patches/CVE-2026-45447-pre1.patch: Revert unnecessary
+      PKCS7_verify() performance optimization in crypto/pkcs7/pk7_smime.c.
+    - debian/patches/CVE-2026-45447-1.patch: Fix possible use-after-free in
+      OpenSSL PKCS7_verify() in crypto/pkcs7/pk7_smime.c.
+    - debian/patches/CVE-2026-45447-2.patch: Test for CVE-2026-45447 (UAF in
+      PKCS7_verify) in test/recipes/80-test_cms.t, test/smime-eml/pkcs7-empty-
+      digest-set.eml.
+    - CVE-2026-45447
+  * SECURITY UPDATE: Possible Heap Buffer Overflow in ASN.1 Multibyte String
+    Conversion
+    - debian/patches/CVE-2026-7383.patch: Reject oversized inputs in
+      ASN1_mbstring_ncopy() in crypto/asn1/a_mbstr.c.
+    - CVE-2026-7383
+  * SECURITY UPDATE: Out-of-Bounds Read in CMS Password-Based Decryption
+    - debian/patches/CVE-2026-9076.patch: cms: kek_unwrap_key: Fix out-of-bounds
+      read in check-byte validation in crypto/cms/cms_pwri.c.
+    - CVE-2026-9076
+
+ -- Marc Deslauriers <marc.deslauriers@ubuntu.com>  Tue, 02 Jun 2026 15:33:25 -0400
+
 openssl (3.0.2-0ubuntu1.23) jammy-security; urgency=medium
 
   * SECURITY UPDATE: NULL pointer dereference when processing an OCSP
