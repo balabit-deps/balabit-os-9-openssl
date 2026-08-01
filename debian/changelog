@@ -1,3 +1,12 @@
+openssl (3.0.2-0ubuntu1.26) jammy-security; urgency=medium
+
+  * SECURITY UPDATE: HollowByte Denial of Service issue (LP: #2161371)
+    - debian/patches/lp2161371.patch: Grow the init_buf incrementally as we
+      receive data in ssl/statem/statem.c, ssl/statem/statem_lib.c.
+    - No CVE number
+
+ -- Marc Deslauriers <marc.deslauriers@ubuntu.com>  Wed, 29 Jul 2026 12:56:04 -0400
+
 openssl (3.0.2-0ubuntu1.25bb1) jammy; urgency=medium
 
   * Balabit patched version
