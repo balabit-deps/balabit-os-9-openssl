@@ -41,7 +41,7 @@ else
 	TESTSUITE_FLAGS =
 endif
 
-ifeq ($(DEB_HOST_ARCH_CPU), amd64)
+ifneq ($(filter amd64 arm64 ppc64el riscv64,$(DEB_HOST_ARCH_CPU)),)
 	CONFARGS += enable-ec_nistp_64_gcc_128
 endif
 

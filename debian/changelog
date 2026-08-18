@@ -1,3 +1,56 @@
+openssl (3.0.2-0ubuntu1.29) jammy-security; urgency=medium
+
+  * SECURITY UPDATE: Excessive Memory Use Buffering DTLS Records for a Future
+    Epoch
+    - debian/patches/CVE-2026-54874-1.patch: Avoid full read buffer allocation
+      when buffering DTLS records in ssl/record/rec_layer_d1.c,
+      ssl/record/record.h, ssl/record/ssl3_record.c.
+    - debian/patches/CVE-2026-54874-2.patch: ssl/record: lower the DTLS
+      unprocessed_rcds queue limit in ssl/record/rec_layer_d1.c,
+      ssl/record/record_local.h, ssl/record/ssl3_record.c.
+    - CVE-2026-54874
+  * SECURITY UPDATE: Heap Buffer Overflow in CMS Key Unwrapping
+    - debian/patches/CVE-2026-63072-1.patch: Add test for CVE-2026-63072 in
+      test/cmsapitest.c, test/recipes/80-test_cmsapi.t.
+    - debian/patches/CVE-2026-63072-2.patch: Fix heap buffer overflow (8-byte
+      OOB write) in AES-WRAP-PAD unwrap in crypto/cms/cms_kari.c.
+    - CVE-2026-63072
+  * SECURITY UPDATE: CMP Indefinite Cache Growth of ExtraCerts
+    - debian/patches/CVE-2026-63074-1.patch: Add a test for restricting growth
+      in cmp cert cache in test/build.info, test/cmp_extracerts_dos_test.c,
+      test/recipes/65-test_cmp_msg.t.
+    - debian/patches/CVE-2026-63074-2.patch: Fix unbounded cert cache growth in
+      cmp in crypto/cmp/cmp_vfy.c.
+    - CVE-2026-63074
+  * SECURITY UPDATE: Invalid Pointer Dereference in CMP Server via Crafted
+    protectionAlg
+    - debian/patches/CVE-2026-63076-1.patch: Add test for CVE-2026-63076 in
+      test/cmp_protect_test.c.
+    - debian/patches/CVE-2026-63076-2.patch: Fix Remote NULL deref in
+      ossl_cmp_calc_protection() via crafted protectionAlg in
+      crypto/cmp/cmp_protect.c.
+    - CVE-2026-63076
+  * SECURITY UPDATE: AEAD Forgeries with Empty Ciphertext When Using
+    EVP_Cipher()
+    - debian/patches/CVE-2026-75803-1.patch: Check the tag on EVP_Cipher()
+      finalize: Poly1305 and OCB AEADs in
+      providers/implementations/ciphers/cipher_aes_ocb.c,
+      providers/implementations/ciphers/cipher_chacha20_poly1305.c.
+    - debian/patches/CVE-2026-75803-2.patch: Add tests for empty AEAD
+      EVP_Cipher() finalization in test/evp_extra_test.c.
+    - CVE-2026-75803
+
+ -- Marc Deslauriers <marc.deslauriers@ubuntu.com>  Tue, 18 Aug 2026 08:18:41 -0400
+
+openssl (3.0.2-0ubuntu1.27) jammy; urgency=medium
+
+  * Enable ec_nistp_64_gcc_128 optimization on multiple 64-bit
+    architectures (LP: #2130576).
+    Thanks to Szilárd Pfeiffer <coroner@pfeifferszilard.hu> for the
+    bug report and patch.
+
+ -- Ravi Kant Sharma <ravi.kant.sharma@canonical.com>  Wed, 12 Aug 2026 15:10:04 +0200
+
 openssl (3.0.2-0ubuntu1.26) jammy-security; urgency=medium
 
   * SECURITY UPDATE: HollowByte Denial of Service issue (LP: #2161371)
