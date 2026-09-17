@@ -1,3 +1,44 @@
+openssl (3.0.2-0ubuntu1.30) jammy-security; urgency=medium
+
+  * SECURITY UPDATE: Excessive Memory Allocation in Relative CRLDP Processing
+    - debian/patches/CVE-2026-35189.patch: Defer computation of relative CRLDP
+      names in crypto/x509/v3_crld.c, crypto/x509/v3_purp.c,
+      crypto/x509/x509_vfy.c, include/crypto/x509.h.
+    - CVE-2026-35189
+  * SECURITY UPDATE: Timing Side-Channel in Scalar Multiplication for Non-NIST
+    EC Curves
+    - debian/patches/CVE-2026-54872-pre1.patch: add value_barrier_bn() to
+      include/internal/constant_time.h.
+    - debian/patches/CVE-2026-54872.patch: ec: make ossl_ec_scalar_mul_ladder()
+      scalar padding constant time in crypto/bn/bn_intern.c,
+      crypto/ec/ec_mult.c, include/crypto/bn.h.
+    - CVE-2026-54872
+  * SECURITY UPDATE: NULL Pointer Dereference in CMP Client Revocation Response
+    Handling
+    - debian/patches/CVE-2026-75805-1.patch: Guard comparison when values are
+      NULL in crypto/cmp/cmp_client.c.
+    - debian/patches/CVE-2026-75805-2.patch: Add test for CVE-2026-75805 in
+      test/cmp_client_test.c.
+    - CVE-2026-75805
+  * SECURITY UPDATE: Unauthenticated and Undersized DTLS 1.2 AEAD Record Causes
+    DoS
+    - debian/patches/CVE-2026-75806.patch: TLS: Reject undersized TLS 1.2 AEAD
+      records before AEAD processing in ssl/record/record.h,
+      ssl/record/ssl3_record.c, ssl/t1_enc.c, test/recordlentest.c.
+    - CVE-2026-75806
+  * SECURITY UPDATE: Timing Side-Channel in SM2 Signature Generation
+    - debian/patches/CVE-2026-77696.patch: sm2: make sm2_sig_gen() constant time
+      in crypto/ec/ec_mult.c, crypto/sm2/sm2_sign.c.
+    - CVE-2026-77696
+  * SECURITY UPDATE: DTLS Retransmits Handshake Messages From a Stale Buffer
+    Offset
+    - debian/patches/CVE-2026-84782.patch: dtls: reset init_off before
+      retransmitting a message in ssl/d1_lib.c, ssl/statem/statem_dtls.c,
+      test/dtlstest.c.
+    - CVE-2026-84782
+
+ -- Marc Deslauriers <marc.deslauriers@ubuntu.com>  Thu, 17 Sep 2026 10:36:24 -0400
+
 openssl (3.0.2-0ubuntu1.29) jammy-security; urgency=medium
 
   * SECURITY UPDATE: Excessive Memory Use Buffering DTLS Records for a Future
