@@ -1,3 +1,9 @@
+openssl (3.0.2-0ubuntu1.30bb1) jammy; urgency=medium
+
+  * Balabit patched version
+
+ -- Balabit Platform Team <devnull@dev.null>  Thu, 22 Oct 2026 12:18:19 +0200
+
 openssl (3.0.2-0ubuntu1.30) jammy-security; urgency=medium
 
   * SECURITY UPDATE: Excessive Memory Allocation in Relative CRLDP Processing
